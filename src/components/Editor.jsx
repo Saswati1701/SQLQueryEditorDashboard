@@ -5,9 +5,9 @@ import { FaPlus } from "react-icons/fa6";
 import { GoTriangleRight } from "react-icons/go";
 import { FaRegSave } from "react-icons/fa";
 
-const QueryEditorTab = ({ tab, key }) => {
+const QueryEditorTab = ({ tab, key, onClick }) => {
   return (
-    <div key={key} className='tab'>
+    <div onClick={onClick} key={key} className='tab'>
       {tab.name}
       <RxCross2 className='icon' />
     </div>
@@ -15,28 +15,56 @@ const QueryEditorTab = ({ tab, key }) => {
 };
 
 const Editor = () => {
-  const activeConnection = useSelector((state)=>state.connections.activeConnection)
-  const tabs = useSelector((state)=> state.queryEditor[activeConnection])
-  const [activeTab, setActiveTab] = useState(tabs[0])
+  const activeConnection = useSelector((state)=>state.queryEditor.activeConnection)
+  const tabs = useSelector((state)=> state.queryEditor.tabs[activeConnection])
+  const activeTabId = useSelector((state)=> state.queryEditor.activeTab)
+  const activeTab = tabs.filter(item => item.id == activeTabId)[0]
+  console.log(activeTab)
   const dispatch = useDispatch();
 
   const handleAddTab = () => {
-    const name = window.prompt('Enter tab name:');
     dispatch({
       type: "ADD_TAB",
       payload: {
-        name: name,
         activeConnection: activeConnection
       }
     })
   }
 
   const handleRunQuery = () => {
-    
+    dispatch({
+      type: "RUN_QUERY",
+      payload: {
+        tabData: activeTab,
+        activeConnection: activeConnection
+      }
+    })
   }
 
   const handleSaveQuery = () => {
     
+  }
+
+  const handleChangeEditorValue = (e) => {
+    dispatch({
+      type: "CHANGE_EDITOR_QUERY",
+      payload: {
+        tabData: activeTab,
+        activeConnection: activeConnection,
+        editorValue: e.target.value
+      }
+    })
+  }
+
+  const handleClickTab = (id) => {
+    console.log(tabs);
+    // setActiveTab(tabs.filter((item, index)=> { return item.id===id })[0])
+    dispatch({
+      type: "CHANGE_ACTIVE_TAB",
+      payload: {
+        tabId: id
+      }
+    })
   }
 
   return (
@@ -45,7 +73,7 @@ const Editor = () => {
         <div className="tabs">  
           {tabs.map((tab, index)=> {
             return (
-              <QueryEditorTab key={index} tab={tab} />
+              <QueryEditorTab onClick={()=> {handleClickTab(tab.id)}} key={index} tab={tab} />
             )
           })}
         </div>
@@ -55,7 +83,7 @@ const Editor = () => {
           <FaRegSave className='icon' onClick={handleSaveQuery} />
         </div>
       </div>
-        <textarea value={activeTab.query} style={{ width: '95%', height: '80%', resize: 'none' }}>
+        <textarea value={activeTab.query} onChange={(e)=>{ handleChangeEditorValue(e) }}>
           
         </textarea>
     </div>

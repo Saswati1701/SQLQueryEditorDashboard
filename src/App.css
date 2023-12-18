@@ -129,7 +129,7 @@ div{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .tabs{
@@ -148,7 +148,10 @@ div{
 }
 
 .tab{
-  border: red 1px solid;
+  border: rgb(67, 64, 64) 1px solid;
+  cursor: pointer;
+  margin: auto 3px;
+  padding: 1px;
 }
 
 .icon{
@@ -157,5 +160,7 @@ div{
 }
 
 textarea{
-  
+  width: 99%;
+  height: 90%;
+  resize: none;
 } 
