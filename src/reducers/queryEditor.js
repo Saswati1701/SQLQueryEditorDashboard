@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import employeeData from '../data/employees.json';
+// import employeeData from '../data/employees.json';
 const initialState = {
     tabs: {
         "1": [
