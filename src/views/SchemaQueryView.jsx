@@ -8,22 +8,26 @@ const SchemaQueryView = () => {
     const [expandQueries, setExpandQueries] = useState(false);
   return (
     <div className='schema-query-view'>
-        <button
-            onClick={()=>{
-                setExpandSchema(true);
-                setExpandQueries(false);
-            }}
-        >
-            Schema Tree
-        </button>
-        <button
-            onClick={()=>{
-                setExpandSchema(false);
-                setExpandQueries(true);
-            }}
-        >
-            Queries
-        </button>
+        <div className='schema-query-button'>
+            <button
+                className={expandSchema? "active":"" }
+                onClick={()=>{
+                    setExpandSchema(true);
+                    setExpandQueries(false);
+                }}
+            >
+                Schema Tree
+            </button>
+            <button
+                className={expandQueries? "active":"" }
+                onClick={()=>{
+                    setExpandSchema(false);
+                    setExpandQueries(true);
+                }}
+            >
+                Queries
+            </button>
+        </div>
         <div>
             {expandSchema && <SchemaTree/>}
             {expandQueries && <Queries/>}

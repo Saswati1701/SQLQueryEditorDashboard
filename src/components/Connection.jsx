@@ -20,14 +20,16 @@ const StyledText = ({title, description}) =>{
     )
 }
 
-const Connection = ({details}) => {
+const Connection = ({details, name}) => {
     console.log("hello:", details)
   return (
     <div className='connection'>
-        <StyledText title="Host" description={details.hostName}/>
-        <StyledText title="Port" description={details.port}/>
-        <StyledText title="User" description={details.userName}/>
-
+        <h3>{name}</h3>
+        <div>
+            <StyledText title="Host" description={details.hostName}/>
+            <StyledText title="Port" description={details.port}/>
+            <StyledText title="User" description={details.userName}/>
+        </div>
     </div>
   )
 }

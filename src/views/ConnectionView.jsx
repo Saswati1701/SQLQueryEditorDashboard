@@ -9,7 +9,7 @@ const ConnectionInfo = ({data}) =>{
         data.map((connection) =>{
             console.log(connection);
             return(
-                <Connection details={connection.details}/>
+                <Connection details={connection.details} name={connection.name}/>
             )
         })
     )

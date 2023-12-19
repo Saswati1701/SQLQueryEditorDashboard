@@ -4,10 +4,11 @@ import { RxCross2 } from "react-icons/rx";
 import { FaPlus } from "react-icons/fa6";
 import { GoTriangleRight } from "react-icons/go";
 import { FaRegSave } from "react-icons/fa";
+// import Employee from "../data/employees.json"
 
-const QueryEditorTab = ({ tab, key, onClick }) => {
+const QueryEditorTab = ({ tab, key, onClick, tabId, activeTabId }) => {
   return (
-    <div onClick={onClick} key={key} className='tab'>
+    <div onClick={onClick} key={key} className={"tab" + (tabId == activeTabId? " active-tab": "")}>
       {tab.name}
       <RxCross2 className='icon' />
     </div>
@@ -19,7 +20,6 @@ const Editor = () => {
   const tabs = useSelector((state)=> state.queryEditor.tabs[activeConnection])
   const activeTabId = useSelector((state)=> state.queryEditor.activeTab)
   const activeTab = tabs.filter(item => item.id == activeTabId)[0]
-  console.log(activeTab)
   const dispatch = useDispatch();
 
   const handleAddTab = () => {
@@ -57,7 +57,6 @@ const Editor = () => {
   }
 
   const handleClickTab = (id) => {
-    console.log(tabs);
     // setActiveTab(tabs.filter((item, index)=> { return item.id===id })[0])
     dispatch({
       type: "CHANGE_ACTIVE_TAB",
@@ -72,15 +71,19 @@ const Editor = () => {
       <div className="tab-list">
         <div className="tabs">  
           {tabs.map((tab, index)=> {
+            console.log("activeTab:",activeTabId)
+            console.log("tabId:",tab.id)
             return (
-              <QueryEditorTab onClick={()=> {handleClickTab(tab.id)}} key={index} tab={tab} />
+              <QueryEditorTab 
+                onClick={()=> {handleClickTab(tab.id)}} key={index} tab={tab} tabId={tab.id} activeTabId={activeTabId}
+              />
             )
           })}
         </div>
         <div className="control-buttons">
-          <FaPlus className='icon' onClick={handleAddTab} />
-          <GoTriangleRight size={20} color="green" className='icon' onClick={handleRunQuery} />
-          <FaRegSave className='icon' onClick={handleSaveQuery} />
+          <FaPlus className='icon' size={20} title='Add tab' onClick={handleAddTab} />
+          <GoTriangleRight className='icon' size={30} title='Run' onClick={handleRunQuery} />
+          <FaRegSave className='icon' size={20} title='Save Query' onClick={handleSaveQuery} />
         </div>
       </div>
         <textarea value={activeTab.query} onChange={(e)=>{ handleChangeEditorValue(e) }}>

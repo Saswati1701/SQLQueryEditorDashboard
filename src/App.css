@@ -1,5 +1,4 @@
 .App {
-  text-align: center;
   height: 100vh;
 }
 
@@ -39,8 +38,7 @@
 }
 
 div{
-  border: 1px solid black;
-  /* padding: px; */
+  background-color: #2026d207;
 }
 
 .dashboard{
@@ -48,20 +46,37 @@ div{
   width: 100%;
   display: flex;
   flex-direction: row;
+  overflow: hidden;
 }
 
 .connnection-view{
+  border: 1px solid #b4b2dc;
   min-width: 135px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0;
 }
 
 .connection{
-  padding: 30px 0;
-  text-align: left;
+  border: 1px solid #b4b2dc;
+    width: 100%;
+    padding: 30px 0;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.connection:hover {
+  background-color: #bcc8ff;
 }
 
 .styled-text{
   border: none;
-  margin-left: 10px;
 }
 
 .content-container{
@@ -78,6 +93,7 @@ div{
 }
 
 .header{
+  border: 1px solid #b4b2dc;
   height: 8%;
   display: flex;
   flex-direction: row;
@@ -86,8 +102,42 @@ div{
 }
 
 .schema-query-view{
+  border: 1px solid #b4b2dc;
   min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 27px 17px 0 17px;
+  overflow-y: scroll;
 }
+
+.schema-query-view::-webkit-scrollbar {
+  display: none;
+}
+
+.schema-query-button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.schema-query-view div button{
+  border: none;
+  background-color:#bcc8ff;
+  width: 120px;
+  color: #4f5070;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 0 10px 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.schema-query-view div .active{
+  color: white;
+  background-color: #2026D2;
+}
+
 
 .query-editor-view{
   height: 100%;
@@ -97,6 +147,7 @@ div{
 }
 
 .editor{
+  border: none;
   height: 40%;
   width: 100%;
 }
@@ -110,10 +161,15 @@ div{
 
 .columns{
   color: blue;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .tables{
+  margin: 4px;
   color: red;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .button{
@@ -125,38 +181,71 @@ div{
 }
 
 .tab-list{
+  border: none;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   /* margin: 10px; */
+  padding: 0 17px 0 5px;
+
 }
 
 .tabs{
+  /* border: 1px solid black; */
+  max-width: 80%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  /* overflow-x: scroll; */
+  font-weight: bold;
+  overflow-x: scroll;
+}
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .control-buttons{
+  border: none;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
 }
 
+.control-buttons .icon{
+  color: #2026D2;
+}
+.control-buttons .icon:hover{
+  color: #61dafb;
+}
+
 .tab{
-  border: rgb(67, 64, 64) 1px solid;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #4f5070;
   cursor: pointer;
-  margin: auto 3px;
-  padding: 1px;
+  padding: 2px 16px;
+  background-color: #bcc8ff;
+  margin-right: 2px;
+  border-radius: 5px;
+}
+
+.tab:hover{
+  color: white;
+  background-color: #2026D2;
+}
+
+.active-tab{
+  background-color: #2026D2;
+  color: white;
 }
 
 .icon{
   cursor: pointer;
-  margin-left: 4px;
+  margin-left: 11px;
 }
 
 textarea{
