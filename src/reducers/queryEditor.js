@@ -81,6 +81,50 @@ const queryEditorReducer = (state = initialState, action) => {
                 }
             }
 
+        case "REMOVE_TAB":
+            let newActiveTab = state.activeTab;
+            if(action.payload.tabID === state.activeTab) {
+                if(state.tabs[state.activeConnection].length > 0) {
+                    newActiveTab = state.tabs[state.activeConnection][0].id
+                } else {
+                    newActiveTab = ""
+                }
+            }
+            return {
+                ...state,
+                tabs: {
+                    ...state.tabs,
+                    [state.activeConnection]: state.tabs[state.activeConnection].filter(item=>{
+                        return item.id != action.payload.tabID
+                    })
+                },
+                activeTab: newActiveTab
+            }
+
+        case "CHANGE_ACTIVE_CONNECTION":
+            if (!(action.payload.connectionId in state.tabs)) {
+                return {
+                    ...state,
+                    tabs: {
+                        ...state.tabs,
+                        [action.payload.connectionId]: [
+                            {
+                                id: 1,
+                                name: "tab1",
+                                query: `SELECT * from database1.products;`,
+                                responsePath:[]
+                            },
+                        ]
+                    },
+                    activeConnection: action.payload.connectionId
+                };
+            }
+        
+            return {
+                ...state,
+                activeConnection: action.payload.connectionId
+            };
+
         default:
         return state;
     }

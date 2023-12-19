@@ -7,10 +7,8 @@ import { FaRegSave } from "react-icons/fa";
 // import Employee from "../data/employees.json"
 
 const QueryEditorTab = ({ tab, key, tabId, activeTabId }) => {
-  const activeConnection = useSelector((state)=>state.queryEditor.activeConnection)
   const dispatch = useDispatch();
   const handleClickTab = (id) => {
-    console.log("double fuck you")
     dispatch({
       type: "CHANGE_ACTIVE_TAB",
       payload: {
@@ -20,7 +18,6 @@ const QueryEditorTab = ({ tab, key, tabId, activeTabId }) => {
   }
   const handleOnClose = (e) =>{
     e.stopPropagation();
-    console.log("fucked", tab.id)
     dispatch({
       type: "REMOVE_TAB",
       payload:{
@@ -80,26 +77,25 @@ const Editor = () => {
   return (
     <div className='editor'>
       <div className="tab-list">
-        <div className="tabs">  
-          {tabs.map((tab, index)=> {
-            return (
+        {tabs.length > 0 &&
+          <div className="tabs">  
+            {tabs.map((tab, index) => (
               <QueryEditorTab 
                 key={index} tab={tab} tabId={tab.id} activeTabId={activeTabId}
               />
-            )
-          })}
-        </div>
+            ))}
+          </div>
+        }
         <div className="control-buttons">
           <FaPlus className='icon' size={20} title='Add tab' onClick={handleAddTab} />
           <GoTriangleRight className='icon' size={30} title='Run' onClick={handleRunQuery} />
           <FaRegSave className='icon' size={20} title='Save Query' onClick={handleSaveQuery} />
         </div>
       </div>
-        <textarea value={activeTab.query} onChange={(e)=>{ handleChangeEditorValue(e) }}>
-          
-        </textarea>
+      {activeTab && <textarea value={activeTab.query} onChange={(e) => { handleChangeEditorValue(e) }}></textarea>}
     </div>
-  )
-}
+  
+  );
+}  
 
 export default Editor

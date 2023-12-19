@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 const StyledText = ({title, description}) =>{
     return(
@@ -20,10 +20,18 @@ const StyledText = ({title, description}) =>{
     )
 }
 
-const Connection = ({details, name}) => {
-    console.log("hello:", details)
+const Connection = ({activeConnection,details, name, id}) => {
+    const dispatch = useDispatch();
+    const handleConnectionClick= (id) => {
+        dispatch({
+            type: "CHANGE_ACTIVE_CONNECTION",
+            payload: {
+                connectionId: id
+            }
+        })
+    }
   return (
-    <div className='connection'>
+    <div className={'connection '+(activeConnection===id && "active" )} onClick={()=>handleConnectionClick(id)}>
         <h3>{name}</h3>
         <div>
             <StyledText title="Host" description={details.hostName}/>

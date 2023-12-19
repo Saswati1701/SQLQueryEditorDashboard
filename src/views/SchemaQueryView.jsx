@@ -16,7 +16,7 @@ const SchemaQueryView = () => {
                     setExpandQueries(false);
                 }}
             >
-                Schema Tree
+                DB Structure
             </button>
             <button
                 className={expandQueries? "active":"" }

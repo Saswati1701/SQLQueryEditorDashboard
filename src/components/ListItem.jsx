@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { GoTriangleRight } from "react-icons/go";
+import { GoTriangleDown } from "react-icons/go";
 
 const ListItem = ({ obj, marginLeft }) => {
   const [expandedState, setExpandedState] = useState({});
+  const [hasClicked, setHasClicked] = useState(false)
 
   const handleExpandToggle = (index) => {
+    setHasClicked(!hasClicked);
     setExpandedState((prevState) => ({
       ...prevState,
       [index]: !prevState[index],
@@ -19,7 +23,7 @@ const ListItem = ({ obj, marginLeft }) => {
           obj.map((item, index) => (
             <div key={index}>
               <p onClick={() => handleExpandToggle(index)} className={item.slug}>
-                {item.name}
+              {hasClicked ? <GoTriangleDown /> : <GoTriangleRight />} {item.name}
               </p>
               {expandedState[index] && <ListItem obj={item.array} marginLeft={marginLeft + 8} />}
             </div>

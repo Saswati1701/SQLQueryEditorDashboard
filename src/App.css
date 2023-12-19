@@ -71,6 +71,10 @@ div{
     cursor: pointer;
 }
 
+.connection.active{
+  background-color: #bcc8ff;
+}
+
 .connection:hover {
   background-color: #bcc8ff;
 }
@@ -186,20 +190,17 @@ div{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  /* margin: 10px; */
-  padding: 0 17px 0 5px;
-
+  padding: 0 5px 0 5px;
+  width: 100%;
 }
 
 .tabs{
   /* border: 1px solid black; */
-  max-width: 80%;
+  width: min-content;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
   font-weight: bold;
-  overflow-x: scroll;
+  overflow-x: scroll;  
 }
 .tabs::-webkit-scrollbar {
   display: none;
@@ -207,10 +208,7 @@ div{
 
 .control-buttons{
   border: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
+  width: 110px;
 }
 
 .control-buttons .icon{
