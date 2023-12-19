@@ -6,11 +6,32 @@ import { GoTriangleRight } from "react-icons/go";
 import { FaRegSave } from "react-icons/fa";
 // import Employee from "../data/employees.json"
 
-const QueryEditorTab = ({ tab, key, onClick, tabId, activeTabId }) => {
+const QueryEditorTab = ({ tab, key, tabId, activeTabId }) => {
+  const activeConnection = useSelector((state)=>state.queryEditor.activeConnection)
+  const dispatch = useDispatch();
+  const handleClickTab = (id) => {
+    console.log("double fuck you")
+    dispatch({
+      type: "CHANGE_ACTIVE_TAB",
+      payload: {
+        tabId: id
+      }
+    })
+  }
+  const handleOnClose = (e) =>{
+    e.stopPropagation();
+    console.log("fucked", tab.id)
+    dispatch({
+      type: "REMOVE_TAB",
+      payload:{
+        tabID: tab.id,
+      }
+    })
+  }
   return (
-    <div onClick={onClick} key={key} className={"tab" + (tabId == activeTabId? " active-tab": "")}>
-      {tab.name}
-      <RxCross2 className='icon' />
+    <div onClick={()=>{handleClickTab(tab.id)}} key={key} className={"tab" + (tab.id == activeTabId? " active-tab": "")}>
+      <i>{tab.name}</i>
+      <RxCross2 onClick={(e)=>{handleOnClose(e)}} className='icon'/>
     </div>
   );
 };
@@ -56,26 +77,14 @@ const Editor = () => {
     })
   }
 
-  const handleClickTab = (id) => {
-    // setActiveTab(tabs.filter((item, index)=> { return item.id===id })[0])
-    dispatch({
-      type: "CHANGE_ACTIVE_TAB",
-      payload: {
-        tabId: id
-      }
-    })
-  }
-
   return (
     <div className='editor'>
       <div className="tab-list">
         <div className="tabs">  
           {tabs.map((tab, index)=> {
-            console.log("activeTab:",activeTabId)
-            console.log("tabId:",tab.id)
             return (
               <QueryEditorTab 
-                onClick={()=> {handleClickTab(tab.id)}} key={index} tab={tab} tabId={tab.id} activeTabId={activeTabId}
+                key={index} tab={tab} tabId={tab.id} activeTabId={activeTabId}
               />
             )
           })}
