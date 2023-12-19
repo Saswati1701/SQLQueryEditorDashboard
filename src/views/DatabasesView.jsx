@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import SchemaQueryView from './SchemaQueryView'
+import DBStructureView from './DBStructureView'
 import QueryEditorView from './QueryEditorView'
 
 const DatabasesView = () => {
@@ -8,7 +8,7 @@ const DatabasesView = () => {
     <div className='databases-view'>
         <Header/>
         <div className='content-container'>
-            <SchemaQueryView/>
+            <DBStructureView/>
             <QueryEditorView/>
         </div>
     </div>

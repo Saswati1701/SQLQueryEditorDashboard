@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import ListItem from './ListItem';
 
-const SchemaTree = () => {
+const DBStructure = () => {
     const allConnections = useSelector((state)=>state.connections.allConnections);
     const selectedConnectionId = useSelector((state)=>state.connections.activeConnection);
     const currentConnection = allConnections.filter((connection) => {
@@ -19,4 +19,4 @@ const SchemaTree = () => {
     )
 }
 
-export default SchemaTree
+export default DBStructure

@@ -1,9 +1,9 @@
 import React from 'react'
-import SchemaTree from '../components/SchemaTree'
+import DBStructure from '../components/DBStructure'
 import Queries from '../components/Queries'
 import { useState } from 'react'
 
-const SchemaQueryView = () => {
+const DBStructureView = () => {
     const [expandSchema, setExpandSchema] = useState(true);
     const [expandQueries, setExpandQueries] = useState(false);
   return (
@@ -29,7 +29,7 @@ const SchemaQueryView = () => {
             </button>
         </div>
         <div>
-            {expandSchema && <SchemaTree/>}
+            {expandSchema && <DBStructure/>}
             {expandQueries && <Queries/>}
         </div>
         
@@ -37,4 +37,4 @@ const SchemaQueryView = () => {
   )
 }
 
-export default SchemaQueryView
+export default DBStructureView
