@@ -2,6 +2,23 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+JavaScript framework used: React
+
+Dependencies used:React-redux, React-icons, React-modal
+
+## Overview of Project
+1. ADD CONNECTION
+    This feature allows the user to add multiple connections and validates connection by its host name, port name, user name and password.
+2. DISPLAY DB STRUCTURE
+    Each connection holds multiple databases and each database holds multiple tables. This complete tree is displayed in a dropdown format in the DB structure section.
+3. SAVED QUERIES
+    Queries entered in an editor tab can be saved and reused. 
+4. QUERY EDITOR
+    The query editor 
+5. PAGE LOAD TIME
+6. OPTIMISATIONS
+7. RENDERING LARGE AMOUNT OF ROWS 
+
 ## Available Scripts
 
 In the project directory, you can run:

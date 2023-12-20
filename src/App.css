@@ -49,6 +49,10 @@ div{
   overflow: hidden;
 }
 
+.ReactModal__Content {
+  border: 1px solid black;
+}
+
 .connnection-view{
   border: 1px solid #b4b2dc;
   min-width: 135px;
@@ -78,6 +82,7 @@ div{
 .connection:hover {
   background-color: #bcc8ff;
 }
+
 
 .styled-text{
   border: none;
@@ -280,7 +285,7 @@ tfoot {
 button {
   padding: 8px;
   cursor: pointer;
-  background-color: #4caf50;
+  background-color: #2026D2;
   color: white;
   border: none;
   border-radius: 4px;

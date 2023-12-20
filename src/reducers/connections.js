@@ -1,10 +1,11 @@
+import { v4 as uuidv4 } from 'uuid';
+
 const initialState = {
     activeConnection: 1,
     allConnections : [
         {   
             name: 'Connection1',
             id:1,
-            display:true,
             details: {
                 hostName:"localhost",
                 port: 3000,
@@ -53,7 +54,6 @@ const initialState = {
         {   
             name: 'Connection2',
             id:2,
-            display:false,
             details: {
                 hostName:"localhost",
                 port: 3000,
@@ -106,6 +106,41 @@ const initialState = {
 
 const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "ADD_CONNECTION":
+            return {
+                ...state,
+                allConnections:[
+                    ...state.allConnections,
+                    {
+                        id: uuidv4(),
+                        name: action.payload.name,
+                        details: action.payload.details,
+                        slug: "databases",
+                        array:[
+                            {
+                                name: 'database31',
+                                id:12,
+                                slug:"tables",
+                                array:[
+                                    {
+                                        name: "employee_territories",
+                                        slug: "columns",
+                                        array:["employeeID","territoryID"]
+                                    },
+                                    {
+                                        name: "employees",
+                                        slug: "columns",
+                                        array:["employeeID","lastName","firstName","title","titleOfCourtesy","birthDate","hireDate","address","city","region","postalCode","country","homePhone","extension","photo","notes","reportsTo","photoPath"]
+                                    },
+                                ]
+                            }
+                        ],
+                        savedQueries:[]
+                    }
+
+
+                ]
+            }
         case "CHANGE_ACTIVE_CONNECTION_2":
             return {
                 ...state,
@@ -126,6 +161,7 @@ const connectionsReducer = (state = initialState, action) => {
                     }
                 })
             }
+
         default:
         return state;
     }
