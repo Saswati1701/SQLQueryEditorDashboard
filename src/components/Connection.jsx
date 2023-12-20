@@ -6,7 +6,7 @@ const StyledText = ({title, description}) =>{
         <div className='styled-text'>
             <span
                 style={{
-                    color:"#757597"
+                    color:"black"
                 }}
             >{title}
             </span>:
@@ -40,7 +40,7 @@ const Connection = ({activeConnection,details, name, id}) => {
   return (
     <div className={'connection '+(activeConnection===id && "active" )} onClick={()=>handleConnectionClick(id)}>
         <h3>{name}</h3>
-        <div>
+        <div style={{backgroundColor: "inherit"}}>
             <StyledText title="Host" description={details.hostName}/>
             <StyledText title="Port" description={details.port}/>
             <StyledText title="User" description={details.userName}/>

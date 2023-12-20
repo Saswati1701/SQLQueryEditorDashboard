@@ -101,7 +101,7 @@ const Editor = () => {
           <FaRegSave className='icon' size={20} title='Save Query' onClick={handleSaveQuery} />
         </div>
       </div>
-      {activeTab && <textarea value={activeTab.query} onChange={(e) => { handleChangeEditorValue(e) }}></textarea>}
+      {activeTab && <label for="editor"><textarea name="editor" value={activeTab.query} onChange={(e) => { handleChangeEditorValue(e) }}></textarea></label>}
     </div>
   
   );

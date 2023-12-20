@@ -173,14 +173,14 @@ div{
 
 
 .columns{
-  color: blue;
+  color: #2026D2 ;
   font-weight: bold;
   cursor: pointer;
 }
 
 .tables{
   margin: 4px;
-  color: red;
+  color: blue;
   font-weight: bold;
   cursor: pointer;
 }

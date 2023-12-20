@@ -1,20 +1,24 @@
-# Getting Started with Create React App
+## Steps to run project locally
+- ```git clone https://github.com/Saswati1701/SQLQueryEditorDashboard.git```
+- ```npm install```
+- ```npm start```
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Live Link
+- https://sql-query-editor-saswati-mahanta.netlify.app/
 
 JavaScript framework used: React
 
-Dependencies used:React-redux, React-icons, React-modal
+Dependencies used:React-redux, React-icons, React-modal, uuid
 
 ## Overview of Project
-1. ADD CONNECTION
+1. ADD CONNECTION:\
     This feature allows the user to add multiple connections and validates connection by its host name, port name, user name and password.
-2. DISPLAY DB STRUCTURE
+2. DISPLAY DB STRUCTURE:\
     Each connection holds multiple databases and each database holds multiple tables. This complete tree is displayed in a dropdown format in the DB structure section.
-3. SAVED QUERIES
+3. QUERY EDITOR:\
+    The query editor provides a textarea to enter and run SQL queries.
+4. SAVED QUERIES:\
     Queries entered in an editor tab can be saved and reused. 
-4. QUERY EDITOR
-    The query editor 
 5. PAGE LOAD TIME
 6. OPTIMISATIONS
 7. RENDERING LARGE AMOUNT OF ROWS 
