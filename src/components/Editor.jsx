@@ -60,7 +60,16 @@ const Editor = () => {
   }
 
   const handleSaveQuery = () => {
-    
+    const saveName = window.prompt('Enter something:');
+    dispatch({
+      type: "SAVE_QUERY",
+      payload: {
+        tabData: {
+          ...activeTab,
+          name: saveName
+        }
+      }
+    })
   }
 
   const handleChangeEditorValue = (e) => {

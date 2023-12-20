@@ -1,6 +1,6 @@
 import React from 'react'
 import DBStructure from '../components/DBStructure'
-import Queries from '../components/Queries'
+import Queries from '../components/SavedQueries'
 import { useState } from 'react'
 
 const DBStructureView = () => {
@@ -25,7 +25,7 @@ const DBStructureView = () => {
                     setExpandQueries(true);
                 }}
             >
-                Queries
+                Saved Query
             </button>
         </div>
         <div>

@@ -106,7 +106,26 @@ const initialState = {
 
 const connectionsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case "CHANGE_ACTIVE_CONNECTION_2":
+            return {
+                ...state,
+                activeConnection: action.payload.connectionId
+            }
 
+        case "SAVE_QUERY":
+            return {
+                ...state,
+                allConnections: state.allConnections.map((item)=>{
+                    if(item.id==state.activeConnection){
+                        return {
+                            ...item,
+                            savedQueries: [...item.savedQueries, action.payload.tabData]
+                        }
+                    }else {
+                        return item
+                    }
+                })
+            }
         default:
         return state;
     }

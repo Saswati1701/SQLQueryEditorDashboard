@@ -1,72 +1,67 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
-import employeeData from '../data/employees.json'
-
-const itemsPerPage = 100;
+import data from '../data/employees.json'
 
 const Response = () => {
-  const activeTab = useSelector(state => {
-    return state.queryEditor.tabs[state.queryEditor.activeConnection].filter(tab => {
-      return tab.id === state.queryEditor.activeTab
-    })[0]
-  })
-
-  console.log('response', activeTab);
-
+  const itemsPerPage = 13;
   const [currentPage, setCurrentPage] = useState(1);
 
-  const totalPages = Math.ceil(employeeData.length / itemsPerPage);
-
+  // Calculate the index range for the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const currentData = employeeData.slice(startIndex, endIndex);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  // Get the records for the current page
+  const currentPageData = data.slice(startIndex, endIndex);
+
+  // Calculate the total number of pages
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  // Handle page navigation
+  const goToPage = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   return (
-    <div>
+    <div className='response'>
       <table>
+        {/* Table headers go here */}
         <thead>
           <tr>
-            <th>Employee ID</th>
-            <th>Last Name</th>
+            <th>ID</th>
             <th>First Name</th>
-            <th>Title</th>
+            <th>Last Name</th>
+            <th>Age</th>
             {/* Add more columns as needed */}
           </tr>
         </thead>
         <tbody>
-          {currentData.map((employee) => (
-            <tr key={employee.employeeID}>
-              <td>{employee.employeeID}</td>
-              <td>{employee.lastName}</td>
-              <td>{employee.firstName}</td>
-              <td>{employee.title}</td>
-              {/* Add more cells as needed */}
+          {/* Render data for the current page */}
+          {currentPageData.map((item) => (
+            <tr key={item.id}>
+              <td>{item.employeeID}</td>
+              <td>{item.firstName}</td>
+              <td>{item.lastName}</td>
+              <td>{item.age}</td>
+              {/* Add more columns as needed */}
             </tr>
           ))}
         </tbody>
       </table>
 
-      <div className="pagination">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-        >
+      {/* Pagination controls */}
+      <div>
+        <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
           Previous
         </button>
-        <span>{`Page ${currentPage} of ${totalPages}`}</span>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-        >
+        <span> Page {currentPage} of {totalPages} </span>
+        <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
           Next
         </button>
       </div>
     </div>
   );
-}
+};
+
 
 export default Response

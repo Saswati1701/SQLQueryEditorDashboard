@@ -7,7 +7,7 @@ const initialState = {
                 id: 1,
                 name: "tab1",
                 query: `SELECT * from database1.products;`,
-                responsePath:[]
+                response: "no" // yes or no for now later will store the response from api call
             },
         ]
     },
@@ -28,11 +28,35 @@ const queryEditorReducer = (state = initialState, action) => {
                         id: uuidv4(),
                         name: `tab${state.tabs[action.payload.activeConnection].length+1}`,
                         query: `--Enter your queries here\nSELECT * from ;`,
-                        response: [],
+                        response: "no",
                     },
                 ]
             }
         };
+
+        case "ADD_TAB_FROM_SAVED_QUERY":
+            // check for is that tab already exists in tabs
+            if(state.tabs[state.activeConnection].some(tab => tab.id == action.payload.tabData.id)) {
+                return {
+                    ...state,
+                    activeTab: action.payload.tabData.id
+                }
+            } else {
+                return {
+                    ...state,
+                    tabs: {
+                        ...state.tabs,
+                        [state.activeConnection]: [
+                            ...state.tabs[state.activeConnection],
+                            {
+                                ...action.payload.tabData
+                            }
+                        ]
+                    },
+                    activeTab: action.payload.tabData.id
+                }
+
+            }
 
         case "CHANGE_EDITOR_QUERY":
         return {
@@ -71,7 +95,7 @@ const queryEditorReducer = (state = initialState, action) => {
                             if(item.id === action.payload.tabData.id)  {
                                 return {
                                     ...item,
-                                    responsePath: 'employeeData'
+                                    response: 'yes'
                                 }
                             } else {
                                 return item
@@ -112,17 +136,19 @@ const queryEditorReducer = (state = initialState, action) => {
                                 id: 1,
                                 name: "tab1",
                                 query: `SELECT * from database1.products;`,
-                                responsePath:[]
+                                response: "no"
                             },
                         ]
                     },
-                    activeConnection: action.payload.connectionId
+                    activeConnection: action.payload.connectionId,
+                    activeTab: 1
                 };
             }
         
             return {
                 ...state,
-                activeConnection: action.payload.connectionId
+                activeConnection: action.payload.connectionId,
+                activeTab: state.tabs[state.activeConnection][0].id
             };
 
         default:

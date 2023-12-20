@@ -22,9 +22,16 @@ const StyledText = ({title, description}) =>{
 
 const Connection = ({activeConnection,details, name, id}) => {
     const dispatch = useDispatch();
+    console.log('sss', id);
     const handleConnectionClick= (id) => {
         dispatch({
             type: "CHANGE_ACTIVE_CONNECTION",
+            payload: {
+                connectionId: id
+            }
+        })
+        dispatch({
+            type: "CHANGE_ACTIVE_CONNECTION_2",
             payload: {
                 connectionId: id
             }
