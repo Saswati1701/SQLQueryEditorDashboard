@@ -34,4 +34,3 @@
     - Implemented pagination in the query's response table to render large amounts of rows.
 
 
-
