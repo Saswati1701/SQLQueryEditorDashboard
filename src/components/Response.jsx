@@ -24,6 +24,16 @@ const Response = () => {
 
   return (
     <div className='response'>
+      {/* Pagination controls */}
+      <div>
+        <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
+          Previous
+        </button>
+        <span> Page {currentPage} of {totalPages} </span>
+        <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
+          Next
+        </button>
+      </div>
       <table>
         {/* Table headers go here */}
         <thead>
@@ -49,16 +59,7 @@ const Response = () => {
         </tbody>
       </table>
 
-      {/* Pagination controls */}
-      <div>
-        <button onClick={() => goToPage(currentPage - 1)} disabled={currentPage === 1}>
-          Previous
-        </button>
-        <span> Page {currentPage} of {totalPages} </span>
-        <button onClick={() => goToPage(currentPage + 1)} disabled={currentPage === totalPages}>
-          Next
-        </button>
-      </div>
+      
     </div>
   );
 };

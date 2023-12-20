@@ -166,6 +166,10 @@ div{
   width: 100%;
 }
 
+.response div{
+  margin-top: 20px;
+}
+
 
 
 .columns{
