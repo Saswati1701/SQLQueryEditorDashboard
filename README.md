@@ -6,86 +6,32 @@
 ## Live Link
 - https://sql-query-editor-saswati-mahanta.netlify.app/
 
-JavaScript framework used: React
+## Performance Report
+![image](https://github.com/Saswati1701/SQLQueryEditorDashboard/assets/92461669/3ba5d55c-71a2-487c-a1bd-a56cde13fd7d)
 
-Dependencies used:React-redux, React-icons, React-modal, uuid
+## Frameworks and Libraries used
+- JavaScript framework used: React
+- Dependencies used: React-redux, React-icons, React-modal, uuid
 
 ## Overview of Project
+- This SQL query editor allows users to establish a connection to the database by entering the host, port, user name, and password. It renders a dashboard that displays the structure of the databases present in the respective connection to the user. User can now add their queries and run it to get the response in a tabular form. User can form advanced features like opening multiple tabs for executing multiple queries, saving the queries, and navigating through multiple connections at a time. These functions is carried out seamlessly.
+
+## Features of Project
 1. ADD CONNECTION:\
-    This feature allows the user to add multiple connections and validates connection by its host name, port name, user name and password.
+    This feature allows the user to add multiple connections and validates connections by their hostname, port name, user name, and password.
 2. DISPLAY DB STRUCTURE:\
-    Each connection holds multiple databases and each database holds multiple tables. This complete tree is displayed in a dropdown format in the DB structure section.
+    Each connection holds multiple databases and each database holds multiple tables. This complete tree is displayed recursively in a dropdown format in the DB structure section with onClick eventListener to expand and collapse.
 3. QUERY EDITOR:\
-    The query editor provides a textarea to enter and run SQL queries.
+    The query editor provides a text area to enter the SQL queries and a control panel to add tabs, run queries, and save queries.
 4. SAVED QUERIES:\
-    Queries entered in an editor tab can be saved and reused. 
-5. PAGE LOAD TIME
-6. OPTIMISATIONS
-7. RENDERING LARGE AMOUNT OF ROWS 
+    The saved queries section sports a list of saved queries.
+5. PAGE LOAD TIME:\
+    Page load time is measured by Chrome Devtools' Lighthouse. Page load time ~ LCP = 0.4s
+   ![image](https://github.com/Saswati1701/SQLQueryEditorDashboard/assets/92461669/b4da4368-722b-4e5c-a670-c10e49c3ed82)  
+6. OPTIMISATIONS:\ 
+    - Designed a redux store to optimize the data flow in the application which also helped in designing complex features conveniently.
+    - Optimized re-renders by using react-redux and employing store splitting.
+    - Implemented pagination in the query's response table to render large amounts of rows.
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
